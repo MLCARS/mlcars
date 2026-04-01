@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html, body {
+  background: #03030a;
+  color: white;
+}
+
+body {
+  min-height: 100vh;
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(236,72,153,0.18), transparent 22%),
+    radial-gradient(circle at 80% 12%, rgba(59,130,246,0.16), transparent 20%),
+    radial-gradient(circle at 50% 80%, rgba(168,85,247,0.18), transparent 28%);
+}
+
+input, textarea, select {
+  color: white;
+}
+
+.card-glass {
+  @apply rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-xl;
+}
+
+.btn-neon {
+  @apply inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-fuchsia-600 via-pink-500 to-violet-600 px-5 py-3 font-semibold text-white shadow-neon transition hover:opacity-95;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center rounded-2xl border border-white/15 bg-transparent px-4 py-3 text-white transition hover:bg-white/10;
+}
