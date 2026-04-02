@@ -45,19 +45,25 @@ products = data.map((item: any) => ({
                 </div>
                 <div className="space-y-4">
                   <Image src="/brand/logo.png" alt="MLCARS" width={340} height={340} className="h-40 w-auto drop-shadow-[0_0_38px_rgba(217,70,239,0.48)] md:h-56" />
-                 <h1 className="text-4xl font-black leading-none tracking-tight md:text-6xl">
-                  ML'CARS — L’expérience automobile premium
-</h1>
+                <div className="space-y-4">
+  <h1 className="text-4xl font-black leading-none tracking-tight md:text-6xl">
+    ML'CARS — L’expérience automobile premium
+  </h1>
 
-<p className="max-w-xl text-base leading-7 text-zinc-100 md:text-lg">
-  Personnalisation, FULL DIP, entretien et multimédia haut de gamme. Donne une nouvelle identité à ton véhicule.
-</p>
-                </div>
-                <div className="flex flex-wrap gap-3">
-                  <a href="#boutique" className="btn-neon">Explorer la boutique</a>
-                  <a href="#devis" className="btn-ghost">Demander un devis</a>
-                </div>
-              </div>
+  <p className="max-w-xl text-base leading-7 text-zinc-100 md:text-lg">
+    Personnalisation, FULL DIP, entretien et multimédia haut de gamme.
+    Donne une nouvelle identité à ton véhicule.
+  </p>
+
+  <div className="flex flex-wrap gap-3 mt-4">
+    <a href="#boutique" className="btn-neon">
+      Voir la boutique
+    </a>
+    <a href="#devis" className="btn-ghost">
+      Demander un devis
+    </a>
+  </div>
+</div>
               <div className="grid gap-4 self-center">
                 <div className="rounded-[28px] border border-fuchsia-400/20 bg-white/5 p-5 shadow-neon">
                   <p className="mb-2 text-sm uppercase tracking-[0.28em] text-zinc-300">Produit vedette</p>
