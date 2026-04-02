@@ -45,10 +45,13 @@ products = data.map((item: any) => ({
                 </div>
                 <div className="space-y-4">
                   <Image src="/brand/logo.png" alt="MLCARS" width={340} height={340} className="h-40 w-auto drop-shadow-[0_0_38px_rgba(217,70,239,0.48)] md:h-56" />
-                  <h1 className="text-4xl font-black leading-none tracking-tight md:text-6xl">Une boutique ML&apos;CARS premium, prête à vendre.</h1>
-                  <p className="max-w-xl text-base leading-7 text-zinc-100 md:text-lg">
-                    {company.slogan}. Multimédia automobile, FULL DIP, entretien premium, devis et paiement Mollie dans un univers haut de gamme.
-                  </p>
+                 <h1 className="text-4xl font-black leading-none tracking-tight md:text-6xl">
+                  ML'CARS — L’expérience automobile premium
+</h1>
+
+<p className="max-w-xl text-base leading-7 text-zinc-100 md:text-lg">
+  Personnalisation, FULL DIP, entretien et multimédia haut de gamme. Donne une nouvelle identité à ton véhicule.
+</p>
                 </div>
                 <div className="flex flex-wrap gap-3">
                   <a href="#boutique" className="btn-neon">Explorer la boutique</a>
