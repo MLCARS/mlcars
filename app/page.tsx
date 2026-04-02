@@ -16,16 +16,16 @@ export default async function HomePage() {
     const { data } = await supabase.from('products').select('*').order('created_at', { ascending: false })
 
     if (data && data.length > 0) {
-      products = data.map((item: any) => ({
-        id: String(item.id),
-        name: item.name,
-        category: item.category,
-        price: Number(item.price),
-        image: item.image || '/brand/logo.png',
-        description: item.description || '',
-        variants: Array.isArray(item.variants) ? item.variants : [],
-        featured: item.featured ?? false,
-      }))
+   products = data.map((item: any) => ({
+  id: String(item.identifiant ?? item.id),
+  name: item.nom ?? item.name,
+  category: item.catégorie ?? item.categorie ?? item.category,
+  price: Number(item.prix ?? item.price),
+  image: item.image || '/brand/logo.png',
+  description: item.description || '',
+  variants: Array.isArray(item.variantes) ? item.variantes : [],
+  featured: item['en vedette'] ?? item.featured ?? false,
+}))
     }
   }
 
