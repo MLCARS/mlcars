@@ -4,9 +4,32 @@ import { Footer } from '@/components/Footer'
 import { ProductCard } from '@/components/ProductCard'
 import { QuoteForm } from '@/components/QuoteForm'
 import { company, fallbackProducts } from '@/lib/data'
+import { getSupabaseServerClient } from '@/lib/supabase'
+import { Product } from '@/lib/types'
 
-export default function HomePage() {
-  const featured = fallbackProducts.find((p) => p.featured) ?? fallbackProducts[0]
+export default async function HomePage() {
+  const supabase = await getSupabaseServerClient()
+
+  let products: Product[] = fallbackProducts
+
+  if (supabase) {
+    const { data } = await supabase.from('products').select('*').order('created_at', { ascending: false })
+
+    if (data && data.length > 0) {
+      products = data.map((item: any) => ({
+        id: String(item.id),
+        name: item.name,
+        category: item.category,
+        price: Number(item.price),
+        image: item.image || '/brand/logo.png',
+        description: item.description || '',
+        variants: Array.isArray(item.variants) ? item.variants : [],
+        featured: item.featured ?? false,
+      }))
+    }
+  }
+
+  const featured = products.find((p) => p.featured) ?? products[0]
 
   return (
     <div className="min-h-screen text-white">
@@ -35,9 +58,9 @@ export default function HomePage() {
               <div className="grid gap-4 self-center">
                 <div className="rounded-[28px] border border-fuchsia-400/20 bg-white/5 p-5 shadow-neon">
                   <p className="mb-2 text-sm uppercase tracking-[0.28em] text-zinc-300">Produit vedette</p>
-                  <p className="text-2xl font-black text-white">{featured.name}</p>
-                  <p className="mt-2 text-zinc-100">{featured.category}</p>
-                  <p className="mt-4 text-4xl font-black text-white">{featured.price.toFixed(2)}€</p>
+                  <p className="text-2xl font-black text-white">{featured?.name}</p>
+                  <p className="mt-2 text-zinc-100">{featured?.category}</p>
+                  <p className="mt-4 text-4xl font-black text-white">{featured?.price?.toFixed(2)}€</p>
                 </div>
                 <div className="grid gap-3 sm:grid-cols-2">
                   <div className="rounded-[24px] border border-cyan-400/20 bg-cyan-400/10 p-4 text-zinc-50">
@@ -73,7 +96,7 @@ export default function HomePage() {
             <a href="/admin" className="btn-ghost">Admin</a>
           </div>
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {fallbackProducts.map((product) => (
+            {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
